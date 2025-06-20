@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="cJelGHUTXf8HZjq9Gjjz5n6jEWNVUefXYDtLPnEpQ3k" />
+    <meta name="description" content="Centro de Estudios Profesionales y de Investigación ESPI. S.C. - Formación en Pedagogía, Maestría y Doctorado en Ciencias de la Educación.">
+    <meta name="keywords" content="ESPI, pedagogía, maestría, doctorado, educación, certificaciones">
+    <meta name="author" content="ESPI">
+    <title>Centro de Estudios Profesionales y de Investigación ESPI. S.C.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('imagen.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            height: 40px;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+        .navbar a:hover {
+            color: #00bfff;
+        }
+        .hero {
+            text-align: center;
+            padding: 120px 20px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+        }
+        .hero img {
+            height: 80px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out, pulse 2s infinite;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .carrusel {
+            max-width: 60%;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .carrusel img {
+            width: 100%;
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+        .carrusel img.active {
+            display: block;
+        }
+        .titulo-recuadros {
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+            margin: 40px 0 20px;
+            font-weight: bold;
+        }
+        .recuadros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .recuadro {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .recuadro:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .recuadro img {
+           width: 80px;
+    height: 80px;
+    object-fit: contain;
+        }
+        .recuadro img:hover {
+            transform: scale(1.1);
+        }
+        .oferta-academica {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .oferta-academica h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .programas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .programa {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .programa:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .programa img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .programa h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .programa p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+            color: #ccc;
+        }
+        .contacto {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .contacto h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .contacto .redes-sociales {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .contacto .redes-sociales a {
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s;
+        }
+        .contacto .redes-sociales a:hover {
+            transform: scale(1.1);
+        }
+        .contacto .redes-sociales img {
+            width: 24px;
+            height: 24px;
+        }
+        .contacto .info-contacto p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+            color: #ccc;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .navbar a { font-size: 14px; }
+            .carrusel { max-width: 90%; }
+            .titulo-recuadros { font-size: 1.8rem; }
+            .recuadros-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .oferta-academica { padding: 15px; }
+            .oferta-academica h2 { font-size: 1.5rem; }
+            .programa img { height: 120px; }
+            .contacto { padding: 15px; }
+            .contacto h2 { font-size: 1.3rem; }
+            .contacto p { font-size: 0.9rem; }
+            .whatsapp-float { bottom: 10px; right: 10px; padding: 8px 16px; font-size: 12px; }
+            .whatsapp-icon { width: 20px; height: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <img src="ESPI.png" alt="Logo ESPI" class="logo" onclick="window.location.href='index.html'">
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="sobre-nosotros.html">Sobre Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="https://moodle.espiuniversidad.com/login/index.php" target="_blank">Plataforma Estudiantil</a>
+        </div>
+    </div>
+
+    <!-- Hero section -->
+    <div class="hero">
+        <img src="ESPI.png" alt="Logo ESPI">
+        <h1>Bienvenidos a ESPI</h1>
+    </div>
+
+    <!-- Carrusel de Pedagogía -->
+    <div class="carrusel">
+        <img src="pedagogia1.jpg" class="active" alt="Pedagogía 1">
+        <img src="pedagogia2.jpg" alt="Pedagogía 2">
+        <img src="pedagogia3.jpg" alt="Pedagogía 3">
+        <img src="pedagogia4.jpg" alt="Pedagogía 4">
+        <img src="pedagogia5.jpg" alt="Pedagogía 5">
+    </div>
+
+    <!-- Título antes de los recuadros -->
+    <h2 class="titulo-recuadros">¿Por qué formar parte de ESPI?</h2>
+
+    <!-- Recuadros en cuadrícula -->
+    <div class="recuadros-grid">
+        <!-- Recuadro 1 -->
+        <div class="recuadro">
+            <img src="icono1.png" alt="Formación en línea">
+            <p><strong>Formación 100% en línea</strong><br>Estudia desde cualquier parte de México. Sin horarios fijos, tú decides cuándo y dónde aprender.</p>
+        </div>
+
+        <!-- Recuadro 2 -->
+        <div class="recuadro">
+            <img src="icono2.png" alt="Título oficial">
+            <p><strong>Títulos oficiales ante la SEP</strong><br>Obtén un título profesional reconocido y válido en todo el país.</p>
+        </div>
+
+        <!-- Recuadro 3 -->
+        <div class="recuadro">
+            <img src="icono3.png" alt="Flexibilidad">
+            <p><strong>Flexibilidad total</strong><br>Adapta tus estudios a tu ritmo de vida, sin descuidar tus responsabilidades personales o profesionales.</p>
+        </div>
+
+        <!-- Recuadro 4 -->
+        <div class="recuadro">
+            <img src="icono4.png" alt="Comunidad">
+            <p><strong>Comunidad nacional</strong><br>Conéctate con estudiantes y profesionales de todo el país.</p>
+        </div>
+
+        <!-- Recuadro 5 -->
+        <div class="recuadro">
+            <img src="icono5.png" alt="Plataforma Moodle">
+            <p><strong>Plataforma Moodle</strong><br>Accede a materiales, foros, tareas y evaluaciones en una plataforma intuitiva y fácil de usar.</p>
+        </div>
+
+        <!-- Recuadro 6 -->
+        <div class="recuadro">
+            <img src="icono6.png" alt="Calidad académica">
+            <p><strong>Calidad académica</strong><br>Programas diseñados por expertos en educación y pedagogía.</p>
+        </div>
+
+        <!-- Recuadro 7 -->
+        <div class="recuadro">
+            <img src="icono7.png" alt="Maestros capacitados">
+            <p><strong>Maestros altamente capacitados</strong><br>Aprende de profesionales con amplia experiencia en el ámbito educativo.</p>
+        </div>
+
+        <!-- Recuadro 8 -->
+        <div class="recuadro">
+            <img src="icono8.png" alt="Estudia a tu ritmo">
+            <p><strong>Estudia a tu ritmo</strong><br>Avanza en tus estudios según tu disponibilidad de tiempo y necesidades.</p>
+        </div>
+    </div>
+
+    <!-- Oferta Académica -->
+    <div class="oferta-academica">
+        <h2>Oferta Académica</h2>
+        <div class="programas">
+            <div class="programa">
+                <img src="licenciatura.jpg" alt="Licenciatura en Pedagogía">
+                <div>
+                    <h3>Licenciatura en Pedagogía</h3>
+                    <p><strong>Duración:</strong> 3 años</p>
+                    <p><strong>Tiempo estimado:</strong> 6 cuatrimestres </p>
+                    <p>Formación integral en pedagogía para el desarrollo educativo.</p>
+                </div>
+            </div>
+            <div class="programa">
+                <img src="maestria.jpg" alt="Maestría en Ciencias de la Educación">
+                <div>
+                    <h3>Maestría en Ciencias de la Educación</h3>
+                    <p><strong>Duración:</strong> 18 meses </p>
+                    <p><strong>Tiempo estimado:</strong> Un sábado al mes </p>
+                    <p>Dedícate a transformar la educación desde la investigación, con una formación completamente en línea y sesiones asíncronas un sábado al mes que impulsan el aprendizaje autónomo y flexible.</p>
+                </div>
+            </div>
+            <div class="programa">
+                <img src="doctorado.jpg" alt="Doctorado en Ciencias de la Educación">
+                <div>
+                    <h3>Doctorado en Ciencias de la Educación</h3>
+                    <p><strong>Duración:</strong> 18 Meses  </p>
+                    <p><strong>Tiempo estimado:</strong> Un sábado al mes </p>
+                    <p>Lidera proyectos de transformación educativa mientras cursa estudios 100% en línea, con una sesión asincrónica al mes para reforzar el aprendizaje en tiempo real..</p>
+                </div>
+            </div>
+            <div class="programa">
+                <img src="certificacion.jpg" alt="Certificaciones">
+                <div>
+                    <h3>Certificación - COMS-117.01</h3>
+                    <p><strong>Duración:</strong> 3 años</p>
+                    <p><strong>Tiempo estimado:</strong> 5 semanas </p>
+                    <p>Experto en la creación de diseños flexibles de planificación didáctica en el marco del diseño universal para el aprendizaje (DUA) .</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Contáctanos -->
+    <div class="contacto" id="contact">
+        <h2>Contáctanos</h2>
+        <div class="redes-sociales">
+            <a href="https://www.instagram.com/espi.cepi/" target="_blank" aria-label="Instagram">
+                <img src="instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100082989536098" target="_blank" aria-label="Facebook">
+                <img src="facebook.png" alt="Facebook">
+            </a>
+        </div>
+        <div class="info-contacto">
+            <p>Correo electrónico: informacion@espicentro.com</p>
+           <p>Dirección: <a href="https://maps.app.goo.gl/cDvdvzpf6XYsbdfU7" target="_blank" style="color: #00bfff; text-decoration: none;">Dirección: P.º de Las Alamedas 72, Las Alamedas, 52970 Cdad. López Mateos, Méx</a></p>
+        </div>
+    </div>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/525548296829" target="_blank" class="whatsapp-float" aria-label="Contáctanos por WhatsApp">
+        <img src="whatsapp-icon.png" alt="WhatsApp" class="whatsapp-icon">
+        <span>CONTÁCTANOS</span>
+    </a>
+
+    <script>
+        // Carrusel de imágenes (Pedagogía)
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carrusel img');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) slideIndex = 0;
+            if (index < 0) slideIndex = totalSlides - 1;
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[slideIndex].classList.add('active');
+        }
+
+        function moveSlide(n) {
+            slideIndex += n;
+            showSlide(slideIndex);
+        }
+
+        setInterval(() => moveSlide(1), 3000); // Cambia la imagen cada 3 segundos
+    </script>
+</body>
+</html>
