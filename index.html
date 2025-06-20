@@ -112,9 +112,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         .recuadro img {
-           width: 80px;
-    height: 80px;
-    object-fit: contain;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
         }
         .recuadro img:hover {
             transform: scale(1.1);
@@ -223,6 +225,34 @@
             height: 24px;
             margin-right: 10px;
         }
+        .menu-flotante {
+            position: fixed;
+            top: 120px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1200;
+            background: rgba(0,0,0,0.7);
+            padding: 12px 8px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        }
+        .menu-flotante a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .menu-flotante a:hover {
+            background: #00bfff;
+            transform: scale(1.1);
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -247,9 +277,28 @@
             .whatsapp-float { bottom: 10px; right: 10px; padding: 8px 16px; font-size: 12px; }
             .whatsapp-icon { width: 20px; height: 20px; }
         }
+        @media (max-width: 700px) {
+            .menu-flotante {
+                left: 5px;
+                top: 90px;
+                padding: 8px 4px;
+            }
+            .menu-flotante a {
+                font-size: 18px;
+                padding: 6px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Menú flotante lateral izquierdo -->
+    <div class="menu-flotante">
+        <a href="index.html" title="Inicio"><span>🏠</span></a>
+        <a href="sobre-nosotros.html" title="Sobre Nosotros"><span>👥</span></a>
+        <a href="contacto.html" title="Contacto"><span>✉️</span></a>
+        <a href="https://moodle.espiuniversidad.com/login/index.php" target="_blank" title="Plataforma"><span>🎓</span></a>
+    </div>
+
     <!-- Barra de navegación -->
     <div class="navbar">
         <img src="ESPI.png" alt="Logo ESPI" class="logo" onclick="window.location.href='index.html'">
@@ -339,7 +388,7 @@
                 <div>
                     <h3>Licenciatura en Pedagogía</h3>
                     <p><strong>Duración:</strong> 3 años</p>
-                    <p><strong>Tiempo estimado:</strong> 6 cuatrimestres </p>
+                    <p><strong>Tiempo estimado:</strong> 6 cuatrimestre </p>
                     <p>Formación integral en pedagogía para el desarrollo educativo.</p>
                 </div>
             </div>
@@ -347,27 +396,27 @@
                 <img src="maestria.jpg" alt="Maestría en Ciencias de la Educación">
                 <div>
                     <h3>Maestría en Ciencias de la Educación</h3>
-                    <p><strong>Duración:</strong> 18 meses </p>
-                    <p><strong>Tiempo estimado:</strong> Un sábado al mes </p>
-                    <p>Dedícate a transformar la educación desde la investigación, con una formación completamente en línea y sesiones asíncronas un sábado al mes que impulsan el aprendizaje autónomo y flexible.</p>
+                    <p><strong>Duración:</strong> año y medio </p>
+                    <p><strong>Tiempo estimado:</strong> 3 semestre </p>
+                    <p>Dedícate a la innovación educativa a través de la investigación.</p>
                 </div>
             </div>
             <div class="programa">
                 <img src="doctorado.jpg" alt="Doctorado en Ciencias de la Educación">
                 <div>
                     <h3>Doctorado en Ciencias de la Educación</h3>
-                    <p><strong>Duración:</strong> 18 Meses  </p>
-                    <p><strong>Tiempo estimado:</strong> Un sábado al mes </p>
-                    <p>Lidera proyectos de transformación educativa mientras cursa estudios 100% en línea, con una sesión asincrónica al mes para reforzar el aprendizaje en tiempo real..</p>
+                    <p><strong>Duración:</strong> año y medio </p>
+                    <p><strong>Tiempo estimado:</strong> 6 semestre</p>
+                    <p>Lidera proyectos de investigación y transformación educativa.</p>
                 </div>
             </div>
             <div class="programa">
                 <img src="certificacion.jpg" alt="Certificaciones">
                 <div>
-                    <h3>Certificación - COMS-117.01</h3>
-                    <p><strong>Duración:</strong> 3 años</p>
-                    <p><strong>Tiempo estimado:</strong> 5 semanas </p>
-                    <p>Experto en la creación de diseños flexibles de planificación didáctica en el marco del diseño universal para el aprendizaje (DUA) .</p>
+                    <h3>Certificaciones</h3>
+                    <p><strong>Duración:</strong> 6 meses</p>
+                    <p><strong>Tiempo estimado:</strong> 1 semestre</p>
+                    <p>Amplía tus habilidades con nuestras certificaciones especializadas.</p>
                 </div>
             </div>
         </div>
@@ -418,3 +467,4 @@
     </script>
 </body>
 </html>
+
